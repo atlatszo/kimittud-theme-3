@@ -1,0 +1,66 @@
+<% @title = "Az API" %>
+
+<%= render :partial => 'sidebar' %>
+
+<div id="left_column_flip">
+  <h1><%=@title %></h1>
+  <dl>
+    <dt>Bevezetés</dt>
+    <dd>
+      <p>Ezen az oldalon elolvashatja, hogyan hozhatók létre további, külsõ weboldalak az adatigénylésekbõl és hogy hogyan hivatkozhat a KiMitTud rendszerben szereplõ adatokra.
+      </p>
+
+      <p>A KiMitTud nem rendelkezik még teljes API-val, de az igényeknek megfelelõen folyamatosan fejlesztünk olyan dolgokat, amelyek használata hasonlít az API-hoz.
+      </p>
+    </dd>
+
+    <dt>Új igénylésekre mutató hivatkozás elhelyezése</dt>
+    <dd>
+      <p>Ha az adatigénylésekre mutató hivatkozásokat szeretne elhelyezni, az URL-ek formája a következõ legyen: <%= link_to new_request_to_body_url(:url_name => "naih") , new_request_to_body_url(:url_name => "naih") %>. Az alábbi paramétereket adhatja hozzá az URL-ekhez akár magában az URL-ben, akár ûrlapról.
+
+      <ul>
+          <li> <strong>title</strong> - új adatigénylés alapértelmezett összefoglalása.</li>
+          <li> <strong>default_letter</strong> - levél törzsének alapértelmezett szövege. Az üdvözlés (Tisztelt...) és az elbúcsúzás (üdvözlettel...) ezt ölelik körbe. </li>
+          <li> <strong>body</strong> - a default_letter alternatívájaként ez meghatározza az adatigénylés teljes szövegének alapértékét, és így az üdvözlés és elbúcsúzás személyre szabható lehet. </li>
+          <li> <strong>tags</strong> - címkék szóközzel elválasztott listája, amely alapján az adatigénylések bármikor kikereshetõk és hivatkozhatók, pl. <em>openlylocal spending_id:12345</em>. A : gépi címkét jelöl. A gépi címkék értéke tartalmazhat kettõspontot, amely URL-ek esetében hasznos lehet.
+      </ul>
+    </dd>
+
+    <dt>RSS- (Atom) hírfolyam</h2>
+    <dd>
+      <p>A legtöbb olyan oldalon, amelyen közérdekû adatigénylések listája szerepel, Atom hírfolyam is található, amelynek segítségével frissítésekhez és XML formátumú hivatkozásokhoz juthat hozzá. Az Atom hírfolyam URL-jét az alábbi módokon keresheti meg: 
+      <ul>
+          <li>Keresse az <img src="/images/feed-16.png" alt=""> RSS-hírfolyam hivatkozást.</li>
+          <li>Vizsgálja meg a <tt>&lt;link rel=&quot;alternate&quot; type=&quot;application/atom+xml&quot;&gt;</tt> címkét a HTML fejrészében. </li>
+          <li>Adja a <tt>/feed</tt> elemet egy másik URL elejéhez.
+      </ul>
+
+      <p>Még az összetettebb keresési lekérdezésekhez is tartozik Atom hírfolyam. Ezek sok mindenre használhatók: kereshet például közintézmény, fájltípus, dátumtartomány vagy állapot szerint. További részletekért lásd az <a href="/search">összetett keresésre vonatkozó tippek</a> címû részt.
+    </dd>
+
+    <dt>JSON formátumú strukturált adatok</dt>
+    <dd>
+      <p>Jónéhány oldalnak van JSON verziója is, amelynek segítségével az objektumokról strukturált formában tud letölteni információt. Ezeket így lehet megtalálni:
+      <ul>
+          <li>Adja a <tt>.json</tt> elemet az URL végéhez. </li>
+          <li>Keresse meg a <tt>&lt;link rel=&quot;alternate&quot; type=&quot;application/json&quot;&gt;</tt> címkét a HTML fejrészében. </li>
+      </ul>
+      </p>
+
+      <p>Az igénylések, a felhasználók és a közintézmények mind rendelkeznek JSON verzióval, amely tartalmazza a rájuk vonatkozó legfontosabb adatokat. Minden Atom hírfolyamnak van JSON formátumú megfelelõje, amely a hírfolyamban található események listájára vonatkozóan tartalmaz adatokat.
+      </p>
+    </dd>
+    
+    <dt>Az összes közintézményt tartalmazó tábla</dt>
+    <dd>
+      <p>
+      A KiMitTud weboldalon keresztül elérhetõ összes közintézményt tartalmazó lista: <%= link_to "all-authorities.csv", all_public_bodies_csv_url() %>
+      </p>
+
+    </dd>
+  </dl>
+
+  <p>Ha olyan API-funkcióra van szüksége, amelyet nem talál, <a href="/help/contact">lépjen velünk kapcsolatba</a>. Folyamatos fejlesztésrõl van szó, és igény esetén újabb és újabb funkciók jelenhetnek meg a rendszerben.</p>
+
+  <div id="hash_link_padding"></div>
+</div>

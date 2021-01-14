@@ -1,0 +1,76 @@
+
+<% @title = "Elégedetlen a kapott válasszal?" %>
+<% if @info_request.nil? %>
+<%= render :partial => 'sidebar' %>
+<div id="left_column_flip">
+<% end %>
+
+<% if !@info_request.nil? %>
+<h1>Nem elégedett a(z) '<%=request_link(@info_request) %>') tárgyú adatigénylésére kapott válasszal?
+</h1>
+<% else %>
+<h1>Nem elégedett az adatigénylésére érkezett válasszal?</h1>
+<% end %>
+
+<p>Ha ...</p>
+
+<ul>
+
+<li>nem kapott választ 15 (+15) munkanapon belül,</li>
+<li>nem kapta meg az összes kért információt,</li>
+<li>indokolatlan mértékű költségtérítést állapítottak meg az adatigényléshez kapcsolódóan <strong>vagy</strong></li>
+<li>válaszát elutasították, de indokolás nélkül vagy jogszabálysértő indokolással tették azt,</li>
+</ul>
+
+<p>...akkor</p>
+
+<ol>
+<li>a <a href="http://www.naih.hu/">Nemzeti Adatvédelmi és Információszabadság Hatósághoz</a> <strong>vagy</strong></li>
+<li>bírósághoz fordulhat,</li>
+<li>emellett célszerű lehet egyéb <strong>formális vagy informális eszközöket is igénybe venni annak érdekében,</strong> hogy kérdésére választ kapjon.</li>
+</ol>
+
+<dl>
+
+<dt id="internal_review">1. Bejelentés küldése a Nemzeti Adatvédelmi és Információszabadság Hatóság részére <a class="hover_a" href="#internal_review">#</a> </dt>
+
+<p>Ha az adatigénylésre nem érkezett a törvényileg előírt határidőn belül válasz, esetleg elégedetlen a kapott válasszal, bejelentéssel fordulhat a Nemzeti Adatvédelmi és Információszabadság Hatósághoz. Bejelentését küldheti
+</p>
+
+<ol>
+<li>az ugyfelszolgalat@naih.hu e-mail címre vagy</li>
+<li>a Nemzeti Adatvédelmi és Információszabadság Hatóság 1530 Budapest, Pf.: 5. postacímére.</li>
+</ol>
+
+<p>Ahhoz, hogy a szükséges információk egyszerűbben eljuthassanak a Hatósághoz, bejelentésében jelölje meg az igénylésre mutató KiMitTud-hivatkozást vagy nyomtassa ki és mellékelje leveléhez az igénylését tartalmazó oldalt és az összes csatolt fájlt! Bejelentésében jelölje meg a bejelentés indokait: például, azt, hogy nem érkezett válasz az adatigénylésére a törvényileg előírt határidőn belül, vagy azt, hogy miért gondolja, hogy az adatigénylés megtagadása jogszerűtlen volt.</p>
+
+<p>A Hatóság vizsgálata ingyenes. Ha a Hatóság a bejelentést érdemben vizsgálja, két hónapon belül döntést kell hoznia. A Hatóság felhívhatja az adatigénylés címzettjét a jogsérelem orvoslására, és az igényelt adatok megküldésére. A Hatóság az eljárásának eredményéről tájékoztatja a bejelentőt.</p>
+
+
+<dt id="complaining">2. Bírósági eljárás kezdeményezése<a class="hover_a" href="#complaining">#</a> </dt>
+
+<p>Ha az adatigénylést nem teljesítették időben és megfelelően, bíróságtól kérheti, hogy kötelezze az adatigénylés címzettjét a megfelelő teljesítésre vagy állapítsa meg  a törvényes mértékű költségtérítést. A felülvizsgálatra vonatkozó keresetet az adatigénylés teljesítésére nyitva álló határidőt követő 30 napon belül nyújthatja be az adatigénylés címzettjének székhelye szerinti helyi bíróságnál, Budapesten a Pesti Kerületi Központi Bíróságnál. Ha az adatigénylés címzettje országos hatáskörű szerv, a keresetet a Fővárosi Törvényszéknél kell benyújtani.</p>
+
+<p>A bírósági eljárásban az adatigénylés címzettjének kell bizonyítania, hogy az adatigénylés megtagadása vagy a költségtérítés összegének megállapítása jogszerű volt.</p>
+
+<p>A bírósági felülvizsgálat illetékmentes, de a pervesztes felet kötelezhetik a perköltség viselésére. A bírósági felülvizsgálat ügyében célszerű lehet ügyvédhez fordulni, <a href="/help/contact">írjon nekünk</a>, ha segítségre van szüksége.</p>
+
+<dt id="other_means">3. Egyéb lehetőségek <a class="hover_a" href="#other_means">#</a> </dt>
+
+<p>A probléma megoldását másképpen is folytathatja:
+
+<ul>
+<li>ha nem kapott választ a határidőn belül, telefonon vagy e-mailen sürgesse az adatgazdát a teljesítésre;</li>
+<li>nyújtson be <strong>új közérdekűadat-igénylést</strong>, amelyben összesített információkat (pl. a kezelt adatok listáját), vagy az elutasított igénylés tárgyához közvetetten kapcsolódó dokumentációt kér - ha elakadt, <a href="/help/contact">forduljon hozzánk</a> ötletért;</li>
+<li>ha az ügyben bármilyen <strong>más adatgazda is</strong> érintett lehet, a közérdekű adatigénylést címezze nekik (is);</li>
+<li>írjon az <strong>országgyűlési képviselőjének, önkormányzati képviselőjének vagy más politikusnak</strong>, és kérje segítségét, hogy választ kapjon kérdésére; az országgyűlési képviselők közvetlenül is megkereshetik a minisztereket vagy a minisztériumokat, a helyi önkormányzatok képviselői közvetlenül fordulhatnak a polgármesteri hivatal tisztviselőjéhez;</li>
+<li>forduljon <strong>más kutatókhoz vagy civil szervezetekhez</strong>, akik az ön elképzeléseihez hasonló kérdésekkel foglalkoznak - akár ezt a weboldalt böngészve is rátalálhat ilyen személyekre; vegye fel a kapcsolatot bármely regisztrált felhasználóval az adott oldalról. Internetes fórumokon vagy csoportoknál is keresgélhet.</li>
+
+</ul>
+</dl>
+
+<p><strong>Tudja meg</strong>, <a href="/help/helpus">hogyan segíthet nekünk</a>.
+
+<% if @info_request.nil? %>
+</div>
+<% end %>

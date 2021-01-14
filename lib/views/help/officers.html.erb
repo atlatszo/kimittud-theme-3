@@ -1,0 +1,111 @@
+<% @title = "Adatigénylésre válaszoló munkatársaknak" %>
+
+<%= render :partial => 'sidebar' %>
+
+<div id="left_column_flip">
+  <h1 id="officers"><%= @title %> <a href="#officers">#</a> </h1>
+
+  <dl>
+
+  <dt id="top">Miről is van szó? Mi ez a KiMitTud weboldal?<a href="#top">#</a> </dt>
+
+  <dd><p>A KiMitTud weboldal ahhoz nyújt segítséget, hogy bárki közérdekű adatokat igényelhessen, a válaszokat könnyen nyomon követhesse és másokkal is megoszthassa.</p>
+
+  <p>Ha ön mint egy állami, önkormányzati vagy más közfeladatot ellátó szerv, intézmény (ezeket nevezzük itt a weboldalon összefoglaló néven adatgazdának) munkatársa e-mailt kapott közérdekűadat-igénylés tárgyban a KiMitTud weboldalról, az azt jelenti, hogy valaki a KiMitTud weboldal segítségével igényelt közérdekű adatokat. Az igénylést kezelje úgy, mintha az egy magánszemélytől érkezett volna. Az egyetlen különbség az, hogy az adatigénylésre adott választ automatikusan elérhetővé tesszük a nyilvánosság számára itt a KiMitTud weboldalon.  </p>
+  <p>Olvassa el az alábbi válaszokat, amelyek az adatgazdák szempontjából fontos kérdésekre igyekeznek választ adni. Érdemes elolvasnia a KiMitTud weboldalt röviden bemutató <a href="/help/about">Mi ez?</a> című Súgó oldalt is. 
+  </p>
+  <p>Ezenkívül az <a href="/hu/body/list/all">Adatgazdák</a> menüpontban kikeresheti azt az intézményt is, amelynek munkatársa, és megtekintheti az oldalunkon keresztül eddig önöknek benyújtott adatigényléseket és azok állapotát.
+
+  <p>Örömmel vesszük, ha az adatgazdák adatigénylésre válaszoló munkatársai megosztják velünk kérdéseiket és véleményüket a weboldallal kapcsolatban, ehhez <a href="/help/contact">itt tud velünk kapcsolatba lépni</a>.
+  </p>
+  </dd>
+
+  <dt id="responses">Miért tesszük nyilvánosan elérhetővé a közérdekűadat-igénylésekre adott válaszokat? <a href="#responses">#</a> </dt>
+
+  <dd>Úgy gondoljuk, ez több szempontból is előnyös. A legfontosabb az, hogy ez segít átláthatóbbá tenni az állam tevékenységét, illetve ezzel felkelthetjük a polgárok érdeklődését az állam munkája iránt, és elősegíthetjük, hogy abban aktívabban vegyenek részt. Abban is bízunk, hogy weboldalunknak köszönhetően csökken az adatgazdákhoz érkező olyan adatigénylések száma, amelyek ugyanarra a kérdésre vonatkoznak. Mivel a közérdekű adatokat bárki kikérheti az adatgazdáktól, így semmi okunk nincs arra, hogy ezeket ne hozzuk nyilvánosságra.
+  </dd>
+
+  <dt id="realpeople">Valós személyek-e az adatigénylők? <a href="#realpeople">#</a> </dt>
+
+  <dd>Igen. A weboldal használatához, igénylések feladásához a felhasználóknak először regisztrálniuk kell magukat a weboldalon e-mail címük megadásával. A válaszok nyomon követése érdekében azonban az igénylések nem a felhasználók saját e-mail címéről kerülnek kiküldésre, hanem minden egyes igényléshez egy a weboldal által generált e-mail címet használunk.
+  </dd>
+
+  <dt id="email_only">Csupán az e-mail cím megadása nem elég egy közérdekűadat-igényléshez beadásához! <a href="#email_only">#</a> </dt>
+
+  <dd>De igen. Az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvény 28. §-a szerint bárki benyújthat adatigényt, és személyes adatai csak annyiban kezelhetők, amennyiben az az igény teljesítéséhez és a költségtérítés megfizetéséhez elengedhetetlenül szükséges. Ehhez pedig az e-mail cím a legtöbb esetben tökéletesen elegendő.  </dd>
+
+  <dt id="vexatious">Nem arról van szó, hogy a weboldalról rengeteg bosszantó adatigénylés fog érkezni, ami felesleges munkát jelent majd számunkra? <a href="#vexatious">#</a> </dt>
+
+  <dd><p>A KiMitTud weboldal maga nem igényel adatokat. Az adatigényléseket valós személyek írják, a weboldal csak továbbítja ezeket. </p>
+  <p>Sőt, mivel minden igénylés nyilvános, sokkal egyszerűbben ellenőrizheti, ha valamelyik felhasználó tényleg csak saját szórakozására nyújt be igényléseket. </p>
+  </dd>
+
+  <dt id="spam_problems">Látok a KiMitTud weboldalon az intézményünkhöz kapcsolódóan egy olyan igénylést, amely soha nem érkezett meg hozzánk e-mailben.<a href="#spam_problems">#</a> </dt>
+
+  <dd><p>Ha rendszerünkben megjelenik egy igénylés, akkor azt e-mailben már elküldtük az érintett adatgazda részére. Ha az igénylés elküldése sikertelen volt, arról automatikusan üzenet jelenik meg weboldalunkon. Ha nem kaptak meg egy adatigénylést, annak több oka is lehet. </p>
+  <p>
+Lehet, hogy nem megfelelő e-mail címre küldtük az igénylést. Az általunk használt e-mail címet úgy nézheti meg, hogy az adatgazdák közül (az <a href="/hu/body/list/all">Adatgazda menüpontban</a>) kiválasztja a saját intézményét, és annak az oldalán megtekinti az Adatgazda e-mail címe linket. Amennyiben jobb lenne, ha másik e-mail címet használnánk, <a href="/help/contact">lépjen velünk kapcsolatba</a>, és adja meg nekünk a megfelelő címet.</p>
+  <p>Előfordulhat, hogy egyes adatigénylések kézbesítésére az adatgazdánál működő levelezőrendszer levélszemétszűrőjének (spamszűrőjének) beállításai miatt nem kerül sor. Ezért ha a KiMitTud weboldalon olyan adatigénylést lát, amit a megfelelő e-mail címre küldtünk, de mégsem érkezett meg, jelezze ezt az intézménye informatikai munkatársai felé, hogy módosítsák a beállításokat.</p>
+  <p>Természetesen bármelyik igénylést szívesen elküldjük újra az adatgazda részére, csak <a href="/help/contact">írja meg nekünk</a>, hogy melyik kérelemről van szó. A levélben lehetőség szerint adja meg az igénylés linkjét.
+  </p>
+  <p>Az egyes adatigénylésekre akkor is válaszolhat, ha nem kapott róla e-mailt. Ehhez azonban arra van szükség, hogy regisztráljon a KiMitTud weboldalon (méghozzá az adatgazdának a weboldalon megosztott e-mail címével). Ebben az esetben az adott igénylés oldalának alján található Válasz az adatigénylésre hivatkozásra kattintva is tud válaszolni.</p>
+
+  </dd>
+
+  <dt id="days"> Mi alapján számítják ki az adatigényléssel kapcsolatos határidőket?<a href="#days">#</a> </dt>
+
+  <dd>
+  <p>Az adatigénylésre vonatkozó hatályos jogszabály, azaz az információs
+önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII.
+törvény 28-30. §-ai alapján:</p>
+
+  <blockquote><p>Az adatgazdának az adatigénylés kézhez vételétől számítva (azaz az adatigénylésről szóló e-mail beérkezését követően) 15 munkanapon belül válaszolnia kell az adatigénylésre.</p></blockquote>
+
+  <p>Amennyiben az adatgazda élni kíván a válaszadási határidő 15 munkanappal való meghosszabbításával vagy költségtérítést számol fel az adatigényléshez kapcsolódóan, akkor ezt az adatigénylés kézhez vételétől számítva 8 munkanapon belül jeleznie kell az igénylő felé, azaz erről tájékoztatást kell küldenie az igénylésben kapott e-mail címre.</p>
+
+  <p>A KiMitTud weboldal a jogszabály által megszabott időkeretek alapján jeleníti meg az egyes igénylések státuszát és az azokhoz kapcsolódó határidőket.</p>
+
+  <p>Amennyiben egy adatgazda nem reagál vagy nem határidőn belül reagál egy adatigénylésre, a KiMitTud weboldal figyelmezteti az igénylőt, hogy ezt jelezze az adatgazdának. Ezzel is szeretnénk elősegíteni, hogy minél több adatigénylés sikerrel záruljon, de a jogorvoslati határidők miatt fontos, hogy az adatgazdák is együttműködőek legyenek, és időben válaszoljanak.</p>
+
+  </dd>
+
+  <dt id="hints"> Mire figyeljen az adatigénylésre adott válaszadáskor?<a href="#hints">#</a> </dt>
+
+  <dd>
+
+
+  <p> Az adatigénylők, a polgárok értékelik az állami, önkormányzati vagy más közfeladatot ellátó szervek, intézményék részéről tapasztalt együttműködést, ezért a jogszabályi előírások mellett érdemes néhány további szempontot is figyelembe venni a válaszadáskor:</p>
+
+<ul>
+
+<li>amennyiben az adatigényléshez kapcsolódóan költségtérítést kénytelen megállapítani, arról minden esetben előzetesen tájékoztassa az igénylőt (függetlenül attól, hogy ez csak abban az esetben lenne kötelessége, ha azt az igénylő külön kéri);</li>
+<li>ha az adatigénylés olyan tartalmú, amelynek nem önök az adatgazdái, de tudja vagy feltételezi, hogy melyik másik adatgazdá(k)hoz érdemes az adott ügyben fordulni, akkor az adatigénylésre adott válaszában ezt is tüntesse fel.</li>
+</ul>
+
+
+  </dd>
+
+
+
+  <dt id="large_file">Hogyan tölthetek fel nagyobb fájlokat, amelyeket e-mailben nem tudok elküldeni?<a href="#large_file">#</a> </dt>
+
+  <dd>E-mail küldése helyett közvetlenül a KiMitTud weboldalon is elküldheti válaszát, és ott fájl feltöltésére is lehetősége van. Ehhez azonban arra van szükség, hogy regisztráljon a weboldalon (méghozzá az adatgazda weboldalon megosztott e-mail címével). Ebben az esetben az adott igénylési oldal alján található Válasz az adatigénylésre hivatkozásra kattintva is tud válaszolni és fájlokat feltölteni. Ha ezzel bármilyen problémája van, vagy a fájl túl nagy ahhoz (azaz meghaladja a 50 Mb-ot), hogy feltöltse, <a href="/help/contact">lépjen velünk kapcsolatba</a>, hogy segíthessünk.
+  </dd>
+
+  <dt id="names">Miért teszik közzé az adatgazda válaszoló munkatársának nevét és az e-mailek szövegét? <a href="#names">#</a> </dt>
+
+  <dd>Az adatgazda munkatársa munkaköri tevékenysége keretében válaszol az adatigénylésre, és válasza közérdekű információnak számít. Ennek szerves része az e-mail és annak küldője is. Az átláthatóság garantálása végett ezért az igénylésekből és az azokra adott válaszokból csak kivételes körülmények esetén távolítunk el tartalmat (például ha jogszabály írja elő). Személyes adatok eltávolításával kapcsolatos politikánkról <a href="/help/privacy#takedown">itt olvashat</a> részletesebben.
+  </dd>
+
+  <dt id="mobiles">Az e-mail címeket és mobiltelefonszámokat is közzéteszik? <a href="#mobiles">#</a> </dt>
+
+  <dd><p>Alapvetően csak az adatgazda azon e-mail címét jelenítjük meg az adatlapon, amelyre a közérdekűadat-igényléseket elküldjük, mert erre a jogszabály módot ad (sőt, az adatgazdát kötelezi is egy ilyen e-mail cím publikálására a saját honlapján). Minden egyéb e-mail címet és telefonszámot igyekszünk automatikusan eltávolítani a megjelenített e-mailekből (a felesleges zaklatások elkerülése miatt). Ha azonban úgy látja, hogy valami elkerülte volna figyelmünket, vagy egy csatolt dokumentumban szerepel olyan e-mail cím vagy telefonszám, amit indokolt okok miatt jobb lenne, ha törölnénk, <a href="/help/contact">lépjen velünk kapcsolatba</a>! </p>
+  <p>Előfordulhat, hogy az e-mail cím fontos része a válasznak, ilyen esetben természetesen nem távolítjuk el azt, de igyekszünk technikailag nehezíteni az ahhoz való hozzáférést.
+  </dd>
+
+  </dl>
+
+
+  <div id="hash_link_padding"></div>
+</div>
+

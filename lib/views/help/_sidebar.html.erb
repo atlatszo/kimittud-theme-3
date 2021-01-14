@@ -1,0 +1,16 @@
+<div id="right_column_flip">
+    <h2>Témák</h2>
+    <ul class="no_bullets">
+        <li><%= link_to_unless_current "Mi ez?", help_about_path %></li>
+        <li><%= link_to_unless_current "Adatigénylés menete", help_requesting_path %></li>
+        <li><%= link_to_unless_current "Adatvédelmi kérdések", help_privacy_path %></li>
+        <li><%= link_to_unless_current "Adatigénylésre válaszoló munkatársaknak", help_officers_path %></li>
+        <li><%= link_to_unless_current "Az API-ról", help_api_path %></li>
+        <li><%= link_to_unless_current "Keresés", search_redirect_path %></li>
+    </ul>
+
+    <h2 id="contact">Kapcsolat</h2>
+    <p>Ha kérdésére itt a súgótémák között nem talált választ, vagy valamit közölni szeretne velünk a weboldallal kapcsolatosan, 
+    <a href="<%= help_contact_path %>">lépjen velünk kapcsolatba</a>.
+    </p>
+</div>

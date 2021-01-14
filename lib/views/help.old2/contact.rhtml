@@ -1,0 +1,93 @@
+<% @title = "Kapcsolat" %>
+
+<%= render :partial => 'sidebar' %>
+
+<div id="left_column_flip">
+<h1><%= @title %></h1>
+
+<div id="contact_preamble">
+
+    <% if !flash[:notice] %>
+        <h2>Közérdekű adatot szeretne megismerni?</h2>
+        <ul>
+            <li><a href="/new">Kattintson ide</a>, ha valamely állami, önkormányzati vagy más közfeladatot ellátó szervétől, intézményétől szeretne nyilvánosan adatot igényelni.</li>
+        </ul>
+
+       
+
+    <% end %>
+
+    <h2>Kapcsolatfelvétel a KiMitTud weboldal munkatársaival</h2>
+    <% if !flash[:notice] %>
+            <ul>
+            <li>
+            Kérjük, először olvassa végig a <a href="/help/about">súgó témákat</a>, mivel előfordulhat, hogy kérdésére ott azonnal választ talál. 
+            </li>
+            
+            <li>Szeretnénk, ha megírná weboldalunk használatával kapcsolatos tapasztalatait. Ezenkívül ha bármilyen kérdése van vagy tanácsra van szüksége a KiMitTud weboldal használatával kapcsolatban, csak töltse ki az alábbi űrlapot, és igyekszünk mielőbb válaszolni:
+            </li>
+
+            <li>Ezt a weboldalt az <a href="http://www.atlatszo.hu">atlatszo.hu</a> üzemelteti.
+</li>
+  </dd>
+            </ul>
+    <% end %>
+</div>
+  <%= foi_error_messages_for :contact %>
+<% form_for :contact do |f| %>
+
+    <% if not @user %>
+        <p>
+            <label class="form_label" for="contact_name">Az ön neve:</label>
+            <%= f.text_field :name, :size => 20 %> (vagy <%= link_to "jelentkezzen be", signin_url(:r => request.request_uri) %>)
+        </p>
+
+        <p>
+            <label class="form_label" for="contact_email">Az ön e-mail címe:</label>
+            <%= f.text_field :email, :size => 20 %>
+        </p>
+    <% end %>
+
+    <p>
+        <label class="form_label" for="contact_subject">Tárgy:</label> 
+        <%= f.text_field :subject, :size => 50 %>
+    </p>
+
+    <p>
+        <label class="form_label" for="contact_message">Üzenet:</label> 
+        <%= f.text_area :message, :rows => 10, :cols => 60 %>
+    </p>
+
+    <% if !@last_request.nil? %>
+        <p>
+            <label class="form_label" for="contact_message">Hivatkozás csatolása az adatigényléshez:</label> 
+            <%=request_link(@last_request) %> <%= submit_tag "eltávolítás", :name => 'remove' %>
+        </p>
+    <% end %> <% if !@last_body.nil? %>
+        <p>
+            <label class="form_label" for="contact_message">Hivatkozás csatolása a hat&oacute;sághoz:</label> 
+            <%=public_body_link(@last_body) %> <%= submit_tag "eltávolítás", :name => 'remove' %>
+        </p>
+    <% end %>
+
+    <p class="form_note">
+    Elsősorban a KiMitTud weboldal tartalmi és technikai problémák megoldásához tudunk segítséget nyújtani,
+     illetve az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvénnyel
+      kapcsolatos kérdéseire tudunk választ adni. Emellett ha bármilyen problémája van egy közérdekűadat-igényléssel
+       kapcsolatban, akkor is igyekszünk segíteni.</p>
+    <p class="form_note">Ha állami, önkormányzati vagy más közfeladatot ellátó szervvel,
+        intézménnyel kíván közvetlenül kapcsolatba lépni, akkor <a href="/new">kattintson ide</a>.
+    </p>
+    <% if flash[:captcha_err] %>
+    <div class="errorExplanation" style="width:620px;"><p class="form_note" ><%= flash[:captcha_err] %></p></div>
+    <% end %>
+    <span class="form_label">Humán audit:</span>
+    <div style="float:right; margin-right:190px;"><%= recaptcha_tags %></div>
+    <div style="clear:both;"></div>
+
+    <div class="form_button">
+        <%= hidden_field_tag(:submitted_contact_form, 1) %> <%= submit_tag "Üzenet küldése" %>
+
+<% end %>
+
+</div>

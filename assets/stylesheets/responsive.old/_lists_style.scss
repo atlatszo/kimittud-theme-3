@@ -1,0 +1,202 @@
+/* Styles for lists of requests, authorities, users */
+.request_listing,.body_listing,.user_listing {
+  border-bottom:1px solid #e9e9e9;
+  .head {
+    font-weight: bold;
+    font-size: 1.6em; // =h3
+  }
+  a {
+    text-decoration: none;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.request_listing{
+  .bottomline {
+    background-position:top left;
+    background-repeat: no-repeat;
+    padding:0 0 0 27px;
+  }
+  .desc {
+    font-style: italic;
+  }
+}
+
+.request_icon_line {
+  background-repeat:no-repeat;
+  background-position:left center;
+  padding:0 0 0 42px;
+}
+
+.request_short_listing {
+  margin-top: 1em;
+  a {
+    text-decoration: none;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.request_short_listing__title {
+  font-weight: normal;
+  font-size: 1em; // ~16px
+  line-height: 1.25em;
+  margin-bottom: 0.2em;
+}
+
+.request_short_listing__authority {
+  font-size: 0.875em;
+  a {
+    color: #777;
+  }
+}
+
+
+$status-success: #69952F;
+$status-failure: #C1272D;
+$status-pending: #A68C2E;
+
+/* Status lines and icons */
+.icon_waiting_classification {
+  background-image:image-url('status/classification.png');
+  color: $status-pending;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/classification@2x.png');
+  }
+}
+
+.icon_waiting_response,.icon_waiting_clarification {
+  background-image:image-url('status/waiting.png');
+  color: $status-pending;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/waiting@2x.png');
+  }
+}
+
+.icon_attention_requested  {
+  background-image:image-url('status/reported.png');
+  color: $status-pending;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/reported@2x.png');
+  }
+}
+
+.icon_not_held {
+  background-image:image-url('status/notheld.png');
+  color: $status-pending;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/notheld@2x.png');
+  }
+}
+
+.icon_successful {
+  background-image:image-url('status/successful.png');
+  color: $status-success;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/successful@2x.png');
+  }
+}
+
+.icon_partially_successful {
+  background-image:image-url('status/partiallysuccessful.png');
+  color: $status-success;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/partiallysuccessful@2x.png');
+  }
+}
+
+.icon_requires_admin {
+  background-image:image-url('status/unusual.png');
+  color: $status-failure;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/unusual@2x.png');
+  }
+}
+
+.icon_waiting_response_overdue {
+  background-image:image-url('status/delayed.png');
+  color: $status-failure;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/delayed@2x.png');
+  }
+}
+
+.icon_waiting_response_very_overdue{
+  background-image:image-url('status/overdue.png');
+  color: $status-failure;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/overdue@2x.png');
+  }
+}
+
+.icon_gone_postal {
+  background-image:image-url('status/postal.png');
+  color: $status-pending;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/postal@2x.png');
+  }
+}
+
+.icon_error_message {
+  background-image:image-url('status/delivery_error.png');
+  color: $status-failure;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/delivery_error@2x.png');
+  }
+}
+
+.icon_internal_review {
+  background-image:image-url('status/review.png');
+  color: $status-pending;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/review@2x.png');
+  }
+}
+
+.icon_user_withdrawn {
+  background-image:image-url('status/withdrawn.png');
+  color: $status-pending;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/withdrawn@2x.png');
+  }
+}
+
+.icon_failed,.icon_rejected {
+  background-image:image-url('status/refused.png');
+  color: $status-failure;
+  background-size: 22px 22px;
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image:image-url('status/refused@2x.png');
+  }
+}
+
+#public_body_list {
+  ul {
+    list-style: none outside none;
+    padding-left: 0;
+  }
+  li {
+    line-height: 1.2em;
+    margin-bottom: 0.4em;
+  }
+}

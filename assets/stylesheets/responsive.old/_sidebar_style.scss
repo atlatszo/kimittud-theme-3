@@ -1,0 +1,89 @@
+/* Display of sidebars */
+.sidebar {
+  h2 {
+    font-size: 0.875em; //14px
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  small {
+    line-height: 1.5em;
+  }
+  .report-this-request {
+    text-align: center;
+  }
+}
+
+.sidebar_similar_requests__more-link {
+  font-size: 0.75em;
+}
+
+/* #track-request .feed_link is here to override specificity in the request sidebar,
+   normally .feed_link should be enough */
+#track-request .feed_link,
+.feed_link {
+  text-align: left;
+  .track-request-action {
+    text-align: center;
+  }
+}
+
+/* Old-style "act" */
+.act_link a {
+  line-height: 1.5em;
+  padding-left: 20px;
+  background-size: 16px;
+  background-position: 0 3px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.act_link--facebook a {
+  background-image: image-url('facebook.png');
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image: image-url('facebook@2.png');
+  }
+}
+
+.act_link--medium a {
+  background-image: image-url('medium.png');
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image: image-url('medium@2.png');
+  }
+}
+
+.act_link--twitter a {
+  background-image: image-url('twitter.png');
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image: image-url('twitter@2.png');
+  }
+}
+
+.act_link--wordpress a {
+  background-image: image-url('wordpress.png');
+}
+
+.act_link--widget a {
+  background-image: image-url('widget.png');
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background-image: image-url('widget@2.png');
+  }
+}
+
+/* New-style "share" */
+.sidebar__share {
+  .act_link {
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+
+  .act_link a {
+    background-size: 24px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    @extend .image-replacement;
+  }
+}
+

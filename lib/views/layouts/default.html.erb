@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+    <head>
+        <meta charset="utf-8">
+        <%= csrf_meta_tags %>
+
+        <title>
+        <% if @title %>
+            <%=@title%> - <%= site_name %>
+        <% else %>
+            <%= site_name %> - <%= _('Make and browse Freedom of Information (FOI) requests') %>
+        <% end %>
+        </title>
+
+        <%= render :partial => 'layouts/favicon' %>
+
+        <%= render :partial => 'general/stylesheet_includes' %>
+        <% if is_admin? %>
+          <%= stylesheet_link_tag "admin", :title => "Main", :rel => "stylesheet" %>
+        <% end %>
+
+        <%= javascript_include_tag "application" %>
+        <% if @profile_photo_javascript %>
+            <%= javascript_include_tag "profile-photos" %>
+            <%= stylesheet_link_tag "jquery.Jcrop.css" %>
+        <% end %>
+
+        <% if @feed_autodetect %>
+            <% for feed in @feed_autodetect %>
+                <link rel="alternate" type="application/atom+xml" title="<%=h feed[:title] %>" href="<%=h feed[:url]%>">
+                <% if feed[:has_json] %>
+                    <link rel="alternate" type="application/json" title="JSON version of <%=h feed[:title] %>" href="<%=h feed[:url]%>.json">
+                <% end %>
+            <% end %>
+        <% end %>
+        <% if @has_json %>
+            <link rel="alternate" type="application/json" title="JSON version of this page" href="<%=h url_for(request.params.merge(:format => 'json')) %>">
+        <% end %>
+
+        <% if @no_crawl %>
+            <meta name="robots" content="noindex, nofollow">
+        <% end %>
+        <% if AlaveteliConfiguration::responsive_styling || params[:responsive] %>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <% end %>
+        <%= render :partial => 'general/before_head_end' %>
+        
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+<meta property="og:site_name" content="KiMitTud?" />
+<meta property="og:locale" content="hu_hu" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="http://kimittud.atlatszo.hu/assets/fb-logo.png" />
+<meta property="og:url" content="<%= request.url %>" />
+<% if @info_request && @info_request.user && @info_request.public_body %>
+<meta property="og:title" content="<%= @info_request.title %>" />
+<meta property="og:description" content="<%= @info_request.user.name%> küldte ezt a Közérdekű adat igénylést <%= @info_request.public_body.name %> részére" />
+<% else %>
+<meta property="og:title" content="<%=@title %>" />
+<meta property="og:description" content="A KiMitTud weboldal ahhoz nyújt segítséget, hogy bárki információkhoz juthasson Magyarország minden olyan állami, önkormányzati vagy más közfeladatot ellátó szervéről, intézményéről (ezeket nevezzük itt a weboldalon összefoglaló néven adatgazdáknak), amely az állam működtetésében részt vesz vagy közpénzt költ." />
+<% end %>
+        
+    </head>
+    <body class="<%= 'front' if params[:action] == 'frontpage' %>">
+
+<div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/hu_HU/all.js#xfbml=1&appId=757294727628956";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+
+    <% if AlaveteliConfiguration::force_registration_on_new_request && !@user %>
+    <%= javascript_include_tag 'fancybox.js' %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#make-request-link").fancybox({
+                'modal': false,
+                'width': 950,
+                'height': 400,
+                'type': 'iframe',
+                'href': '/<%= FastGettext.locale %>/profile/sign_in?modal=1',
+                'onClosed': function() {
+                    // modal_signin_successful variable set by modal dialog box
+                    if (typeof modal_signin_successful != 'undefined' ) {
+                        window.location.href = '<%= select_authority_url %>';
+                    }
+                }
+            });
+        });
+    </script>
+    <% end %>
+
+<% if is_admin? %>
+  <%= render :partial => 'admin_general/admin_navbar' %>
+<% end %>
+
+<div class="entirebody">
+    <% popup_banner = render(:partial => "general/popup_banner").strip %>
+    <% if popup_banner.present? and  ! @render_to_file %>
+    <div id="everypage" class="popup">
+      <span class="popup-content">
+      <%= raw popup_banner %>
+      </span>
+      <span class="popup-close"><a href="#top" ><%= _('Close') %></a></span>
+    </div>
+    <% end %>
+    <div id="other-country-notice" class="popup">
+      <span class="popup-content">
+      </span>
+      <span class="popup-close"><a href="#top" ><%= _('Close') %></a></span>
+    </div>
+    <% if AlaveteliConfiguration::responsive_styling || params[:responsive] %>
+        <%= render :partial => 'general/responsive_header' %>
+    <% else %>
+        <%= render :partial => 'general/header' %>
+    <% end %>
+    <div id="wrapper">
+        <div id="content">
+            <% if flash[:notice] %>
+                <div id="notice"><%= flash[:notice] %></div>
+            <% end %>
+            <% if flash[:error] %>
+                <div id="error"><%= flash[:error] %></div>
+            <% end %>
+
+            <div id="<%= controller.controller_name + "_" + controller.action_name %>" class="controller_<%= controller.controller_name %>">
+            <%= yield :layout %>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <% if AlaveteliConfiguration::responsive_styling || params[:responsive] %>
+        <%= render :partial => 'general/responsive_footer' %>
+    <% else %>
+        <%= render :partial => 'general/footer' %>
+    <% end %>
+
+</div>
+<div id="link_box"><span class="close-button">X</span>
+<%= _("Paste this link into emails, tweets, and anywhere else:") %>
+<br />
+<input type="text">
+</div>
+    <%
+      unless AlaveteliConfiguration::ga_code.empty? || (@user && @user.super?) %>
+        <script type="text/javascript">
+          var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+          document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+          var pageTracker = _gat._getTracker("<%= AlaveteliConfiguration::ga_code %>");
+          pageTracker._trackPageview();
+        </script>
+
+      <% end %>
+
+      <%= render :partial => 'general/before_body_end' %>
+
+<!-- Google analytics-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32177217-1']);
+  _gaq.push(['_setDomainName', 'atlatszo.hu']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push (['_gat._anonymizeIp']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  
+  
+<% if params[:action] == 'frontpage' %>
+<!-- (C)2000-2013 Gemius SA - gemiusAudience  -->
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var pp_gemius_identifier = 'ncdKf3NJx2jQbYxZ722IaIXz.mNd94dOlcS9qAh2C_r.x7';
+// lines below shouldn't be edited
+function gemius_pending(i) { window[i] = window[i] || function() {var x = window[i+'_pdata'] = window[i+'_pdata'] || []; x[x.length]=arguments;};};
+gemius_pending('gemius_hit'); gemius_pending('gemius_event'); gemius_pending('pp_gemius_hit'); gemius_pending('pp_gemius_event');
+(function(d,t) {try {var gt=d.createElement(t),s=d.getElementsByTagName(t)[0],l='http'+((location.protocol=='https:')?'s':''); gt.setAttribute('async','async');
+gt.setAttribute('defer','defer'); gt.src=l+'://gahu.hit.gemius.pl/xgemius.js'; s.parentNode.insertBefore(gt,s);} catch (e) {}})(document,'script');
+//--><!]]>
+</script>
+    <% elsif controller.controller_name == "help" %>
+<!-- (C)2000-2013 Gemius SA - gemiusAudience  -->
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var pp_gemius_identifier = '.WdA3WNc65bQIGuQF1RXP4Xz.mNd94dOWzpw0yOECHH.g7';
+// lines below shouldn't be edited
+function gemius_pending(i) { window[i] = window[i] || function() {var x = window[i+'_pdata'] = window[i+'_pdata'] || []; x[x.length]=arguments;};};
+gemius_pending('gemius_hit'); gemius_pending('gemius_event'); gemius_pending('pp_gemius_hit'); gemius_pending('pp_gemius_event');
+(function(d,t) {try {var gt=d.createElement(t),s=d.getElementsByTagName(t)[0],l='http'+((location.protocol=='https:')?'s':''); gt.setAttribute('async','async');
+gt.setAttribute('defer','defer'); gt.src=l+'://gahu.hit.gemius.pl/xgemius.js'; s.parentNode.insertBefore(gt,s);} catch (e) {}})(document,'script');
+//--><!]]>
+</script>
+    <% else %>
+<!-- (C)2000-2013 Gemius SA - gemiusAudience  -->
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var pp_gemius_identifier = 'B8Lqv_t0t_i075wtErrQTJR67Om6GGyVoL43G0kC3lj.w7';
+// lines below shouldn't be edited
+function gemius_pending(i) { window[i] = window[i] || function() {var x = window[i+'_pdata'] = window[i+'_pdata'] || []; x[x.length]=arguments;};};
+gemius_pending('gemius_hit'); gemius_pending('gemius_event'); gemius_pending('pp_gemius_hit'); gemius_pending('pp_gemius_event');
+(function(d,t) {try {var gt=d.createElement(t),s=d.getElementsByTagName(t)[0],l='http'+((location.protocol=='https:')?'s':''); gt.setAttribute('async','async');
+gt.setAttribute('defer','defer'); gt.src=l+'://gahu.hit.gemius.pl/xgemius.js'; s.parentNode.insertBefore(gt,s);} catch (e) {}})(document,'script');
+//--><!]]>
+</script>
+<% end %>
+
+
+
+
+    </body>
+</html>

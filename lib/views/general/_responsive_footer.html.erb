@@ -1,0 +1,14 @@
+<div class="footer" id="footer">
+    <div id="footer-nav">
+      <ul class="social row">
+          <li class="logo"><%= link_to image_tag('footer-logo.png'), frontpage_path, :id => 'logo' %></li>
+          <li><%= link_to _("Contact {{site_name}}", :site_name => site_name), help_contact_path %></li>
+          <li><%= link_to "KiMitTud a facebookon", "https://www.facebook.com/KiMitTud" %></li>
+          <% unless AlaveteliConfiguration::twitter_username.blank? %>
+            <li><a href="https://twitter.com/<%= AlaveteliConfiguration::twitter_username %>"><%= _("Follow us on twitter") %></a></li>
+          <% end %>
+      </ul>
+      <%= render :partial => 'general/responsive_credits' %>
+      <span class="footer-last"><a href="http://creativecommons.org/licenses/by-sa/2.5/">Nevezd meg! - Így add tovább! CC BY-SA 2.5</a><span>
+    </div>
+</div>

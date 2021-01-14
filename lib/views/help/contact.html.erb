@@ -1,0 +1,91 @@
+<% @title = "Contact us" %>
+
+<%= foi_error_messages_for :contact %>
+
+<h1>Kapcsolatfelvétel</h1>
+
+<div id="contact_preamble">
+
+    <% if !flash[:notice] %>
+        <h2>Közérdekű adatot szeretne megismerni?</h2>
+        <ul>
+            <li><a href="/new">Kattintson ide</a>, ha valamely állami, önkormányzati vagy más közfeladatot ellátó szervétől, intézményétől szeretne nyilvánosan adatot igényelni.</li>
+
+            <li>
+            Saját magáról kérne információt? Olvasson erről a
+            <a href="<%= help_requesting_path(:anchor => 'data_protection') %>">súgóban!</a>.
+            </li>
+        </ul>
+
+    <% end %>
+
+    <h2>Kapcsolatfelvétel a KiMitTud weboldal munkatársaival</h2>
+    <% if !flash[:notice] %>
+            <ul>
+            <li>
+            Kérjük, először olvassa végig a <a href="/help/about">súgó témákat</a>, mivel előfordulhat, hogy kérdésére ott azonnal választ talál. 
+            </li>
+            
+            <li>Szeretnénk, ha megírná weboldalunk használatával kapcsolatos tapasztalatait. Ezenkívül, ha bármilyen kérdése van vagy tanácsra van szüksége a KiMitTud weboldal használatával kapcsolatban, csak töltse ki az alábbi űrlapot, és igyekszünk mielőbb válaszolni.
+            </li>
+
+            <li>Ezt a weboldalt az <a href="http://www.atlatszo.hu/impresszum/">atlatszo.hu</a> üzemelteti.
+</li>
+            </ul>
+    <% end %>
+</div>
+
+<%= form_for :contact do |f| %>
+
+    <% if not @user %>
+        <p>
+            <label class="form_label" for="contact_name">Név:</label>
+            <%= f.text_field :name, :size => 20 %>
+            (vagy <%= link_to "bejelentkezés", signin_path(:r => request.fullpath) %>)
+        </p>
+
+        <p>
+            <label class="form_label" for="contact_email">Email:</label>
+            <%= f.text_field :email, :size => 20 %>
+        </p>
+    <% end %>
+
+    <p>
+        <label class="form_label" for="contact_subject">Tárgy:</label>
+        <%= f.text_field :subject, :size => 50 %>
+    </p>
+
+    <p>
+        <label class="form_label" for="contact_message">Üzenet:</label>
+        <%= f.text_area :message, :rows => 10, :cols => 60 %>
+    </p>
+
+    <p style="display:none;">
+        <%= f.label :comment, 'Ne töltse ki ezt a mezőt' %>
+        <%= f.text_field :comment %>
+    </p>
+
+    <% if !@last_request.nil? %>
+        <p>
+            <label class="form_label" for="contact_message">Adja hozzá az üzenethez az alábbi adatigénylés linkjét:</label>
+            <%=request_link(@last_request) %>
+            <%= submit_tag "eltávolít", :name => 'remove' %>
+        </p>
+    <% end %>
+    <% if !@last_body.nil? %>
+        <p>
+            <label class="form_label" for="contact_message">Adja hozzá az üzenethez az alábbi adatgazda linkjét:</label>
+            <%=public_body_link(@last_body) %>
+            <%= submit_tag "eltávolít", :name => 'remove' %>
+        </p>
+    <% end %>
+
+
+    <div class="form_button">
+        <%= hidden_field_tag(:submitted_contact_form, 1) %>
+        <%= submit_tag "Üzenet küldése", :disable_with => "Küldés..." %>
+    </div>
+
+<% end %>
+
+
