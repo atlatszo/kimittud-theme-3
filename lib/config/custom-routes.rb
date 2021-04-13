@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
     # brand new controller example
-    match '/mycontroller' => 'general#mycontroller'
+    match '/mycontroller' => 'general#mycontroller', via: [:get, :post]
     # Additional help page example
-    match '/help/help_out' => 'help#help_out'
+    match '/help/help_out' => 'help#help_out', via: [:get, :post]
 end
